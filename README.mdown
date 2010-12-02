@@ -1,0 +1,20 @@
+## A little introduction
+
+* `src/stylesheets`: Put your SASS files here. Will be compiled into `public/src`;
+* `src/views`: Put your HAML views here. These are compiled using PHamlP, so check it's documentation to know everything about it's (little) syntax differences;
+* `public/images`: Put here all the theme images. SASS will recognize them properly if you use the image-url() helper;
+* `index.php`: That's the default WP entrypoint. Call `render_view('view_name')` to.. well.. render the views you need. You can replicate the same behaviour on `single.php`, `page.php`, etc, or you can put everything in `index.php` and check what's the current page with all the `is_XXX()` WP functions;
+* `helpers.php`: Add here all the function you need to use in your views;
+
+Please, review the `lib/helpers.php` file in order to see all the helpers this theme already provides you.
+
+## Installation
+
+
+  cd my_wordpress_installation/wp-content/themes
+  git clone git://github.com/welaika/wp_sass_haml.git my_brand_new_theme
+  cd my_brand_new_theme
+  bundle install --path .bundle
+  bundle exec guard
+
+Now your SASS files are guarded, and will be compiled as soon as you save them.
