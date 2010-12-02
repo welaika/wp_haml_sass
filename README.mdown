@@ -7,6 +7,7 @@
 * `public/images`: Put here all the theme images. SASS will recognize them properly if you use the `image-url()` helper;
 * `index.php`: That's the default WP entrypoint. Call `render_view('view_name')` to.. well.. render the views you need. You can replicate the same behaviour on `single.php`, `page.php`, etc, or you can put everything in `index.php` and check what's the current page with all the `is_XXX()` WP functions;
 * `helpers.php`: Add here all the function you need to use in your views;
+* `init/*.php`: All the Wordpress initializations must be placed here. A few initializers are already provided: `custom_fields.php`, `custom_post_types.php`, `hooks.php` and `site_options.php`
 
 Please, review the `lib/helpers.php` file in order to see all the helpers this theme already provides you.
 
