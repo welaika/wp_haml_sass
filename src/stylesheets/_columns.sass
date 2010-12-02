@@ -1,0 +1,19 @@
+$grid-total-width: 960px
+$grid-padding: 25px
+$grid-columns-count: 12
+
+#{enumerate(".grid", 1, $grid-columns-count, "")}
+  :float left
+  :margin-left $grid-padding
+  
+@for $i from 1 through $grid-columns-count
+  .grid#{$i}
+    :width #{$i * ($grid-total-width - $grid-padding * ($grid-columns-count - 1)) / $grid-columns-count + ($i - 1) * $grid-padding}
+    
+.alpha
+  :margin-left 0px
+  :clear left
+
+.grid-container
+  :margin-bottom 30px
+  +clearfix

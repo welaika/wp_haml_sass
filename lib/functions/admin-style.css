@@ -1,0 +1,218 @@
+/*-------------------------------------------------------------------------------------------*/
+/* WooThemes admin styles */
+/*-------------------------------------------------------------------------------------------*/
+
+.updated {display:none!important} /* disable the admin notices */
+
+#welaika_container  { margin: 15px; width: 785px; position:relative }
+
+#welaika_container #header  { height: 80px; background: url(images/headertile.jpg) repeat-x left top; border: 1px solid #a4bbcd; border-top-left-radius: 15px; -moz-border-radius-topleft: 15px; -webkit-border-top-left-radius: 15px; -webkit-border-top-right-radius: 15px; border-top-right-radius: 15px; -moz-border-radius-topright: 15px;  }
+
+#welaika_container #header .logo  { float: left; margin: 24px 0 0 25px; height: 35px; }
+#welaika_container #header .theme-info  { float: right; margin: 26px 25px 0 0; }
+#welaika_container #header .theme-info span  { display: block; line-height: 15px; text-transform: uppercase; text-align: right; color: #4e4e4e; text-shadow: 1px 1px 0 #fff; }
+#welaika_container #header .theme-info .theme  { font-size: 15px; font-weight: bold; }
+#welaika_container #header .theme-info .framework  { font-size: 12px; }
+#welaika_container #header .theme-info b { font-size: 11px; text-transform: none; color: #444; font-weight: 100; }
+
+#welaika_container #support-links  { height: 32px; padding: 0 0 0 20px; background-color: #d7e6f2; border-top: 1px solid #f1f6fa; border-bottom: 1px solid #a4bbcd; border-left: 1px solid #d8d8d8; border-right: 1px solid #d8d8d8; }
+#welaika_container #support-links ul li  { display: inline; margin: 0 6px 0 0; }
+#welaika_container #support-links ul li a:link, #support-links ul li a:visited  { line-height: 32px; font-size: 10px; font-weight: bold; text-transform: uppercase; text-decoration: none; color: #21759b; text-shadow: 1px 1px 0 #fff; }
+#welaika_container #support-links ul li a:hover  { color: #155876; }
+#welaika_container #support-links ul li.changelog  { padding: 2px 0 2px 20px; background: url(images/ico-changelog.png) no-repeat left center; }
+#welaika_container #support-links ul li.docs  { padding: 1px 0 1px 20px; background: url(images/ico-docs.png) no-repeat left top; }
+#welaika_container #support-links ul li.forum  { padding: 1px 0 1px 20px; background: url(images/ico-forum.png) no-repeat left top; }
+#welaika_container #support-links ul li.right { float:right; margin-right:20px}
+
+#welaika_container #main  { background-color: #f1f1f1; border-left: 1px solid #d8d8d8; border-right: 1px solid #d8d8d8; border-top: 1px solid #d8d8d8; border-bottom: 1px solid #d8d8d8; }
+
+#welaika_container #welaika-nav  { float: left; position: relative; z-index: 9999; width: 160px; }
+#welaika_container #welaika-nav li { margin-bottom:0}
+#welaika_container #welaika-nav ul li a:link, #welaika-nav ul li a:visited  { display: block; padding: 10px 10px 10px 15px; font-family: Georgia, Serif; font-size: 13px; text-decoration: none; color: #797979; border-bottom: 1px solid #d8d8d8; }
+#welaika_container #welaika-nav ul li.current a, #welaika-nav ul li a:hover  { color: #21759b; background-color: #fff; }
+
+#welaika_container #content  { float: left; min-height: 550px; width: 595px; margin-left: -1px; padding: 0 14px; font-family: "Lucida Grande", Sans-serif; background-color: #fff; border-left: 1px solid #d8d8d8; }
+
+#welaika_container #content .section { margin-bottom: 10px;}
+#welaika_container #content .section h3.heading  { font-family: ;margin: 10px 0 10px 0; padding: 7px 0px; /* background: #f1f1f1 url(images/headingtop.jpg) repeat-x left top; */ border-bottom: 1px solid #e7e7e7; }
+#welaika_container #content .section .controls  { float: left; width: 345px; margin: 0 15px 0 0; }
+#welaika_container #content .section .explain  { float: left; width: 225px; padding: 0 10px 0 0; font-size: 11px; color: #999999; }
+
+#welaika_container #content .section-checkbox .controls { width:25px}
+#welaika_container #content .section-checkbox .explain { width:540px}
+
+#welaika_container #content .section-color .controls { width:125px}
+#welaika_container #content .section-color .explain { width:440px}
+
+
+#welaika_container textarea, #welaika_container input, #welaika_container select {
+-moz-border-radius-bottomleft:4px;
+-moz-border-radius-bottomright:4px;
+-moz-border-radius-topleft:4px;
+-moz-border-radius-topright:4px;
+border-style:solid;
+border-width:1px;
+}
+
+#welaika_container .controls input,#welaika_container .controls select,#welaika_container .controls textarea {
+    margin-bottom: 9px !important;
+    background-color: #f1f1f1;
+    border: 1px solid;
+    border-color: #ccc #e6e6e6 #e6e6e6 #ccc;
+    width: 340px;
+    padding: 4px;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana,sans-serif;
+    font-size: 12px;
+}
+
+#welaika_container .controls select { padding: 0 0 0 4px; width: 340px }
+#welaika_container .controls textarea {width: 345px; }
+
+
+#welaika_container input[type=text]  { width: 340px; }
+
+#welaika_container input.checkbox  { width: 30px; }
+#welaika_container input.welaika-radio { width: 30px; }
+
+#welaika_container .controls .input-text-small { width: 60px; margin-right:10px}
+#welaika_container .meta-two { margin-right:10px}
+
+#welaika_container .controls .welaika-color {float:left; width: 80px; margin-left:5px; /* font-size:20px; height:34px;*/}
+
+#welaika_container #content .section-typography .controls  { width:425px }
+#welaika_container #content .section-typography .explain  { width:140px }
+
+#welaika_container .controls .welaika-typography-size { width:80px; float:left}
+#welaika_container .controls .welaika-typography-unit { width:50px; float:left}
+#welaika_container .controls .welaika-typography-face { width:100px; float:left}
+#welaika_container .controls .welaika-typography-style { width:80px; float:left}
+
+#welaika_container .controls .welaika-radio-img-img { border:3px solid #fff; margin:0 5px 10px 0; display:none; cursor:pointer;}
+#welaika_container .controls .welaika-radio-img-selected { border:3px solid #ccc}
+#welaika_container .controls .welaika-radio-img-img:hover { opacity:.8; }
+
+#welaika_container .controls .welaika-border-width { width:80px; float:left}
+#welaika_container .controls .welaika-border-style { width:120px; float:left}
+
+
+#welaika_container .group { padding-bottom:20px}
+#welaika_container .group h2 { display:none;  border-bottom:3px solid #e7e7e7}
+
+#welaika_container input:focus,#welaika_container select:focus, #welaika_container textarea:focus { background:#fff;}
+
+#welaika_container .happy {
+    background: #DBF6BE no-repeat 10px center;
+    border: solid #9BBF65;
+    border-width: 0px 1px 1px 1px;
+    color: #060;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+#welaika_container  .warning {
+    background: #ffeeee no-repeat 10px center;;
+    border: solid #dfbfbf;
+    border-width: 0px 1px 1px 1px;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+#welaika_container .update_available {
+
+    background: #FFFEEB no-repeat 10px center;;
+    border: solid #CCCCCC;
+    border-width: 0px 1px 1px 1px;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+
+	
+	
+}
+
+/*
+#welaika_container .welaika-uploaded-image { border:2px solid #dedede; -moz-border-radius: 3px; display:block;}
+#welaika_container .welaika-uploaded-image img {margin:5px;display:block}
+*/
+
+#welaika_container .welaika-save-popup { position:absolute; -moz-border-radius:12px; background:rgba(0,0,0,0.4); color:#fff; font-size:24px; text-align:center; display:none}
+
+#welaika_container .welaika-save-save { background:url(images/happy.png) 20px 50% no-repeat; padding:30px 30px 30px 70px}
+#welaika_container .welaika-save-reset { background:url(images/warning.png) 20px 50% no-repeat; padding:30px 30px 30px 70px}
+
+.upload_button_div { margin-bottom: 10px;}
+.upload_button_div .button { padding:4px 14px;
+}
+.upload_button_div  .image_reset_button { margin-left:10px}
+
+.upload-error { float:left;color:#666; font-size:10px; font-weight:bold; text-decoration:none; text-shadow:1px 1px 0 #FFFFFF;
+				  margin: 0 10px 0 0; padding:3px 10px; background:#FFDFEC; -moz-border-radius:4px}
+
+.reset-button { background:#c77 none !important;color:white!important;text-shadow:0 1px 0 #555 !important;}
+.save_bar_top { background: #f3f3f3; border:solid #ccc; border-width:0px 1px 1px 1px; padding: 10px 20px 0px 20px; height: 35px; text-align: right;}
+.hide {display:none}
+
+.ajax-loading-img-top { margin: 8px 4px 0; float:left}
+.ajax-loading-img-bottom {}
+
+.welaika-option-image { max-width:340px; }
+
+#welaika_container .mini .controls select, #welaika_container #content .section .mini .controls {width: 70px; }
+#welaika_container #content .section .mini .explain { width:500px; }
+
+/*-------------------------------------------------------------------------------------------*/
+/* FEEDS PAGE */
+/*-------------------------------------------------------------------------------------------*/
+
+		.themes-page div.info { height:30px;}
+		.themes-page div.info a {  float:left; margin: 0 10px 0 0; padding:3px 10px; background:#D7E6F2; -moz-border-radius:4px}
+		.themes-page div.info a:link,
+		.themes-page div.info a:visited { color:#21759B; font-size:10px; font-weight:bold; text-decoration:none; text-shadow:1px 1px 0 #FFFFFF;}
+		.themes-page div.info a:active,
+		.themes-page div.info a:hover{color:#155876;}
+
+        ul.themes li.theme {border-bottom: 1px #ddd solid; padding: 20px 0;  height:230px}
+        ul.themes li.theme span{ display:block; float: left}
+        ul.themes li.theme span img{  }
+        ul.themes li.theme div {margin-left: 310px; }
+        ul.themes li.theme div h2 { font-size: 20px; background: #eee; padding: 0px 10px; margin-bottom: 10px; border-bottom:1px #ddd solid; border-top:1px #e1e1e1 solid}
+        ul.themes li.theme div h2 a:link, 
+        ul.themes li.theme div h2 a:visited {  color: #555; text-decoration: none; font-style: normal;}
+        
+        ul.themes li.theme div p { width: 450px; padding-left: 5px;}
+        ul.themes li.theme div p{ font-size: 12px!important;  margin: 10px 10px 10px 10px; }
+        ul.themes li.theme div ul {padding-left: 0px; color: #ccc; float:left; border-top:#eee 1px solid; padding-top: 10px;margin-left:20px }
+        ul.themes li.theme div ul li { list-style: disc; list-style-position:inside;  }
+        ul.themes li.theme div ul li a:link, 
+        ul.themes li.theme div ul li a:visited { font-size: 12px!important; text-decoration: none;}
+        ul.themes li.theme div ul li a:hover, 
+        ul.themes li.theme div ul li a:active { text-decoration: underline ;}
+
+/*-------------------------------------------------------------------------------------------*/
+/* GENERAL STYLES */
+/*-------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+html body * span.clear,
+html body * div.clear,
+html body * li.clear,
+html body * dd.clear
+{
+	background: none;
+	border: 0;
+	clear: both;
+	display: block;
+	float: none;
+	font-size: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}

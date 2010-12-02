@@ -1,0 +1,27 @@
+!!! 5
+%html
+  %head
+  
+    / Charset
+    %meta(http-equiv="Content-type" content="text/html;charset=UTF-8")
+  
+    / Title
+    %title= get_page_title(bloginfo('name'), " – ")
+    
+    / Stylesheets
+    %link(rel="stylesheet" type="text/css" media="all" href="#{public_url('css/screen.css')}")
+    
+    / Feeds
+    %link(rel="alternate" type="application/rss+xml" title="#{get_bloginfo('name')}" href="#{get_bloginfo('atom_url')}")
+    
+    / The title, description and image that will be used by Facebook
+    %meta{:name => "title", :content => "#{get_page_title(bloginfo('name'), ' – ')}"}
+    %meta{:name => "description", :content => "#{bloginfo('description')}"}
+    %link{:rel => "image_src", :href => "#{public_url('/images/logo.png')}"}
+    
+  %body
+    - global $current_view
+    = render_partial($current_view)
+    
+    %script(type="text/javascript" src="#{public_url('javascripts/jquery.js')}")
+    %script(type="text/javascript" src="#{public_url('javascripts/app.js')}")
