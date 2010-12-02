@@ -11,10 +11,10 @@ Please, review the `lib/helpers.php` file in order to see all the helpers this t
 ## Installation
 
 
-  cd my_wordpress_installation/wp-content/themes
-  git clone git://github.com/welaika/wp_sass_haml.git my_brand_new_theme
-  cd my_brand_new_theme
-  bundle install --path .bundle
-  bundle exec guard
+    cd my_wordpress_installation/wp-content/themes
+    git clone git://github.com/welaika/wp_sass_haml.git my_brand_new_theme
+    cd my_brand_new_theme
+    bundle install --path .bundle
+    bundle exec guard
 
 Now your SASS files are guarded, and will be compiled as soon as you save them.
