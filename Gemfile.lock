@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/welaika/guard-compass.git
-  revision: e88fdeb87331e25923f81b5cc47ab5427aff02de
+  revision: 9b4c6de5ed83fa109de0c409fba1ad36cbd81961
   specs:
     guard-compass (0.0.6)
       compass (>= 0.10.5)
