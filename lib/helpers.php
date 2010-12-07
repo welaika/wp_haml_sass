@@ -5,8 +5,13 @@ require_once dirname(__FILE__).'/vendor/phamlp/haml/HamlParser.php';
 // ====== HAML Helpers ======
 
 function render_partial($name) {
-  $haml = new HamlParser(array('style' => 'nested', 'ugly' => false));
-  require $haml->parse(dirname(__FILE__)."/../src/views/$name.haml", dirname(__FILE__).'/../tmp');
+  global $bypass_haml;
+  if ($bypass_haml) {
+    require dirname(__FILE__)."/../tmp/$name.php";
+  } else {
+    $haml = new HamlParser(array('style' => 'expanded', 'ugly' => false));
+    require $haml->parse(dirname(__FILE__)."/../src/views/$name.haml", dirname(__FILE__).'/../tmp');
+  }
 }
 
 function render_view($name) {
@@ -56,7 +61,14 @@ function public_url($path) {
   return get_bloginfo('stylesheet_directory') . "/public/$path";
 }
 
-function link_to($text, $link, $class = '') {
+function option_tag($text, $name, $value, $selected) {
+  if (is_wp_error($value)) {
+    return print_r($value);
+  }
+  return "<option name='$name' value='$value' " . ($selected ? "selected='selected'" : "") . ">$text</option>";
+}
+
+function link_to($text = '', $link = '', $class = '') {
   if (!$text) {
     $text = "Testo non disponibile";
   }
@@ -126,30 +138,35 @@ function thumbnails($size) {
   return $attachments;
 }
 
-function get_the_post_thumbnail_image($size) {
+function get_the_post_thumbnail_image($size, $with_image = true) {
   $thumbs = thumbnails($size);
-  return image_tag($thumbs[0]['thumb']);
+
+  if ($with_image)
+    return image_tag($thumbs[0]['thumb']);
+
+  return $thumbs[0]['thumb'];
 }
 
 
 // ====== Wordpress helpers ======
 
-function lastest_posts_of_type($type, $limit = -1) {
-  return get_posts("numberposts=$limit&post_type=$type");
+function lastest_posts_of_type($type, $limit = -1, $order = 'date') {
+  return query_posts("numberposts=$limit&post_type=$type&orderby=$order");
 }
 
-function lastest_post_of_type($type) {
-  $posts = lastest_posts_of_type($type, 1);
+function lastest_post_of_type($type, $order = 'date') {
+  $posts = lastest_posts_of_type($type, 1, $order);
   return $posts[0];
 }
 
-function latest_posts_of_category($category, $limit, $offset = 0, $post_type = 'post', $taxonomy = 'category') {
+function latest_posts_of_category($category, $limit, $offset = 0, $post_type = 'post', $taxonomy = 'category', $order = 'date') {
   return query_posts(array(
     'posts_per_page' => $limit,
     'taxonomy' => $taxonomy,
     'term' => $category,
     'offset' => $offset,
-    'post_type' => $post_type
+    'post_type' => $post_type,
+    'orderby' => $order
   ));
 }
 
@@ -185,9 +202,14 @@ function get_post_type_singular_name() {
   return $obj->labels->name;
 }
 
-function get_category_id_by_name($cat_name){
-  $term = get_term_by('name', $cat_name, 'category');
+function get_category_id_by_name($cat_name, $taxonomy = 'category'){
+  $term = get_term_by('name', $cat_name, $taxonomy);
   return $term->term_id;
+}
+
+function get_category_link_by_name($cat_name, $taxonomy = 'category') {
+  $id = get_category_id_by_name($cat_name, $taxonomy);
+  return get_category_link($id);
 }
 
 function is_post_type($type) {

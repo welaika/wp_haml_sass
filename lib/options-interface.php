@@ -395,14 +395,15 @@ function welaika_load_only() {
 
           }
           else{
-            var buildReturn = '<img class="hide welaika-option-image" id="image_'+clickedID+'" src="'+response+'" width="300" alt="" />';
-  //          var buildReturn = '<img class="hide" id="image_'+clickedID+'" src="<?php bloginfo('template_url') ?>/thumb.php?src='+response+'&w=345" alt="" />';
+            var id = response.split(",")[0];
+            var url = response.split(",")[1];
+            var buildReturn = '<img class="hide welaika-option-image" id="image_'+clickedID+'" src="'+url+'" alt="" />';
             jQuery(".upload-error").remove();
             jQuery("#image_" + clickedID).remove();
             clickedObject.parent().after(buildReturn);
             jQuery('img#image_'+clickedID).fadeIn();
             clickedObject.next('span').fadeIn();
-            clickedObject.parent().prev('input').val(response);
+            clickedObject.parent().prev('input').val(id);
           }
           }
         });
@@ -503,13 +504,16 @@ function welaika_ajax_callback() {
       $filename = $_FILES[$clickedID];
       $override['test_form'] = false;
       $override['action'] = 'wp_handle_upload';
-      $uploaded_file = wp_handle_upload($filename,$override);
-
-          $upload_tracking[] = $clickedID;
-          update_option( $clickedID , $uploaded_file['url'] );
-          //update_option( $themename . $clickedID , $uploaded_file['url'] );
-       if(!empty($uploaded_file['error'])) {echo 'Upload Error: ' . $uploaded_file['error']; }
-       else { echo $uploaded_file['url']; } // Is the Response
+      $attachment_id = media_handle_upload($clickedID,0,array(),$override);
+      $upload_tracking[] = $clickedID;
+      if (is_wp_error($attachment_id)) {
+        echo 'Upload Error: ' . $attachment_id->get_error_message();
+      } else {
+        update_option( $clickedID , $attachment_id );
+        $thumb = image_downsize($attachment_id);
+        $thumb_url = $thumb[0];
+        echo "$attachment_id,$thumb_url";
+      }
     }
 
 
@@ -519,7 +523,7 @@ function welaika_ajax_callback() {
         global $wpdb;
         $query = "DELETE FROM $wpdb->options WHERE option_name LIKE '$id'";
         $wpdb->query($query);
-        //die;
+        die();
 
     }
     elseif($_POST['type'] == 'framework'){
@@ -1186,9 +1190,11 @@ function welaikathemes_uploader_function($id,$std,$mod){
   $uploader .='</div>' . "\n";
     $uploader .= '<div class="clear"></div>' . "\n";
   if(!empty($upload)){
+      $thumb = image_downsize($upload);
+      $thumb_url = $thumb[0];
     //$upload = cleanSource($upload); // Removed since V.2.3.7 it's not showing up
-      $uploader .= '<a class="welaika-uploaded-image" href="'. $upload . '">';
-      $uploader .= '<img id="image_'.$id.'" src="'.$upload.'" width="345" alt="" />';
+      $uploader .= '<a class="welaika-uploaded-image" href="'. $thumb_url . '">';
+      $uploader .= '<img id="image_'.$id.'" src="'.$thumb_url.'" alt="" />';
       $uploader .= '</a>';
     }
   $uploader .= '<div class="clear"></div>' . "\n";
