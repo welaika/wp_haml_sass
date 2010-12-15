@@ -11,6 +11,8 @@
      is_post_type_archive("custom-post-type") or is_post_type_archive()
      is_tax("custom-taxonomy-name")
 
+     Add yours here.
+
   */
 
   if (is_single()) {
