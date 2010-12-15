@@ -209,35 +209,6 @@ function attachment_thumbnail($id, $size) {
   return $image[0];
 }
 
-function has_thumbnails() {
-  return count(attachments_get_attachments()) || has_post_thumbnail();
-}
-
-function thumbnails($size) {
-
-  $attachments = attachments_get_attachments();
-
-  if (!$attachments) {
-    $attachments = array();
-  }
-
-  if (has_post_thumbnail()) {
-    array_unshift($attachments, array(
-      'title' => '',
-      'caption' => '',
-      'id' => get_post_thumbnail_id()
-    ));
-  }
-
-  foreach ($attachments as $k => $v) {
-    $v['thumb'] = attachment_thumbnail($v['id'], $size);
-    $v['large'] = attachment_thumbnail($v['id'], 'large');
-    $attachments[$k] = $v;
-  }
-
-  return $attachments;
-}
-
 function get_the_post_thumbnail_image($size, $with_image = true) {
   $thumbs = thumbnails($size);
 

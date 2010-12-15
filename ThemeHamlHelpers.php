@@ -11,7 +11,7 @@
   class ThemeHamlHelpers extends HamlHelpers {
 
     public static function render_parametrized_partial($block, $partial, $options) {
-      $src = get_partial($partial);
+      $src = get_partial_content($partial);
       foreach ($options as $option => $value) {
         $src = preg_replace("/\{$option\}/", $value, $src);
       }
@@ -20,7 +20,7 @@
     }
 
     public static function custom_block($block, $title) {
-      ThemeHamlHelpers::render_parametrized_partial($block, '_block', array('title' => $title));
+      ThemeHamlHelpers::render_parametrized_partial($block, '_custom_block', array('title' => $title));
     }
 
   }

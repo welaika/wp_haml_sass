@@ -15,7 +15,7 @@
   */
 
   if (is_single()) {
-    render_view("single")
+    render_view("single");
   } else {
     render_view("archive");
   }
