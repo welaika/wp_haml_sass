@@ -33,3 +33,12 @@
     }
     add_filter('request', 'add_custom_posts_to_feed');
   */
+
+  /*
+    // Enable upload of custom MIME types
+    function custom_upload_mimes ( $existing_mimes=array() ) {
+      $existing_mimes['bib'] = 'text/x-bibtex';
+      return $existing_mimes;
+    }
+    add_filter('upload_mimes', 'custom_upload_mimes');
+  */

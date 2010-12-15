@@ -9,9 +9,31 @@ function render_partial($name) {
   if ($bypass_haml) {
     require dirname(__FILE__)."/../tmp/$name.php";
   } else {
-    $haml = new HamlParser(array('style' => 'expanded', 'ugly' => false));
+    $haml = new HamlParser(array('style' => 'expanded', 'ugly' => false, 'helperFile' => dirname(__FILE__).'/../ThemeHamlHelpers.php'));
     require $haml->parse(dirname(__FILE__)."/../src/views/$name.haml", dirname(__FILE__).'/../tmp');
   }
+}
+
+function get_partial_content($name) {
+  ob_start();
+  render_partial($name);
+  $partial_content = ob_get_contents();
+  ob_end_clean();
+  return $partial_content;
+}
+
+function get_sitewise_option($option) {
+  if ($value = get_option($option)) {
+    return $value;
+  } else {
+    $options = get_option('welaika_template');
+    foreach ($options as $o) {
+      if ($o['id'] == $option) {
+        return $o['std'];
+      }
+    }
+  }
+  return '';
 }
 
 function render_view($name) {
@@ -24,7 +46,11 @@ function render_view($name) {
 
 function limit_words($string, $word_limit) {
   $words = explode(' ', $string);
-  return implode(' ', array_slice($words, 0, $word_limit));
+  if (count($words) < $word_limit) {
+    return $string;
+  } else {
+    return implode(' ', array_slice($words, 0, $word_limit)) . "...";
+  }
 }
 
 function get_the_time_ago($granularity=1) {
@@ -133,10 +159,10 @@ function option_tag($text, $name, $value, $selected) {
 }
 
 function link_to($text = '', $link = '', $class = '') {
-  if (!$text) {
+  if (!is_string($text)) {
     $text = "Testo non disponibile";
   }
-  if (!link) {
+  if (!is_string($link)) {
     $link = "#link_not_available";
   }
   if ($class) {
@@ -150,6 +176,16 @@ function image_tag($img) {
     $img = get_bloginfo('stylesheet_directory') . "/" . $img;
   }
   return "<img src='$img' alt=''/>";
+}
+
+function active_if($active_check) {
+  return $active_check ? "active" : "inactive";
+}
+
+function the_page($title) {
+  global $post;
+  $post = get_page(get_page_id_by_title($title));
+  setup_postdata($post);
 }
 
 // ====== The Events Calendar Plugin ======
@@ -308,7 +344,7 @@ function get_page_title($prefix = "", $separator = "") {
   if (is_post_type_archive()) {
     $title = get_post_type_singular_name();
   }
-  if (is_single()) {
+  if (is_single() || is_page()) {
     $title = get_the_title();
   }
   if (is_search()) {

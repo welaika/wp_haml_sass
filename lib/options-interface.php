@@ -84,15 +84,13 @@ function welaikathemes_add_admin() {
     {
         add_menu_page ('Page Title', $themename, 6,'welaikathemes_home', 'welaikathemes_options_page');
     }
-    $welaikapage = add_submenu_page('welaikathemes', $themename, 'Opzioni del Tema', 6, 'welaikathemes','welaikathemes_options_page'); // Default
+    $welaikapage = add_submenu_page('welaikathemes', $themename, 'Theme Options', 6, 'welaikathemes','welaikathemes_options_page'); // Default
 
   // Add framework functionaily to the head individually
   add_action("admin_print_scripts-$welaikapage", 'welaika_load_only');
   add_action("admin_print_scripts-$welaikaframeworksettings", 'welaika_load_only');
 
 }
-
-
 
 /*-----------------------------------------------------------------------------------*/
 /* Framework options panel - welaikathemes_options_page */
@@ -844,17 +842,25 @@ function welaikathemes_machine($options) {
     break;
     case 'textarea':
 
-      if(isset($value['options']) && isset($value['std'])) {
-        $ta_options = $value['options'];
-        $cols = $ta_options['cols'];
+      if(isset($value['options']['cols'])) {
+        $cols = $value['options']['cols'];
+      } else {
+        $cols = 8;
+      }
+
+      if (isset($value['std'])) {
         $ta_value = $value['std'];
       } else {
-        $cols = '8';
         $ta_value = '';
       }
-        $std = get_option($value['id']);
-        if( $std != "") { $ta_value = stripslashes( $std ); }
-        $output .= '<textarea class="welaika-input" name="'. $value['id'] .'" id="'. $value['id'] .'" cols="'. $cols .'" rows="8">'.$ta_value.'</textarea>';
+
+      $std = get_option($value['id']);
+
+      if ($std != "") {
+        $ta_value = stripslashes( $std );
+      }
+
+      $output .= '<textarea class="welaika-input" name="'. $value['id'] .'" id="'. $value['id'] .'" cols="'. $cols .'" rows="8">'.$ta_value.'</textarea>';
 
 
     break;
@@ -1287,6 +1293,3 @@ function welaikathemes_version_checker ($local_version) {
   return $update_message;
 
 }
-
-
-?>
