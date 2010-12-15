@@ -1,6 +1,5 @@
 <?php
   require_once 'lib/helpers.php';
-  require_once 'helpers.php';
 
   // Here you call the proper view (these are placed in src/views/ directory)
 
