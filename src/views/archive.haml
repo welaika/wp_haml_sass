@@ -1,7 +1,7 @@
 - while (have_posts())
   - the_post()
-    .post
-      %h1= link_to(get_the_title(), get_permalink())
-      .formatted-text= the_content()
+  
+  = custom_block(link_to(get_the_title(), get_permalink()))
+    = the_content()
             
 = render_partial("sidebar")

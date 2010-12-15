@@ -1,5 +1,5 @@
 !!! 5
-%html
+%html(html_attrs())
   %head
   
     / Charset
@@ -20,8 +20,19 @@
     %link{:rel => "image_src", :href => "#{public_url('/images/logo.png')}"}
     
   %body
-    - global $current_view
-    = render_partial($current_view)
+  
+    .header= render_partial("_header")
+    .navigation= render_partial("_navigation")
+    
+    .content
+      - global $current_view
+      = render_partial($current_view)
+      
+    .footer= render_partial("_footer")
     
     %script(type="text/javascript" src="#{public_url('javascripts/jquery.js')}")
+    %script(type="text/javascript" src="#{public_url('javascripts/tipsy.js')}")
+    %script(type="text/javascript" src="#{public_url('javascripts/easing.js')}")
+    %script(type="text/javascript" src="#{public_url('javascripts/fancybox.js')}")
+    %script(type="text/javascript" src="#{public_url('javascripts/cycle.js')}")
     %script(type="text/javascript" src="#{public_url('javascripts/app.js')}")

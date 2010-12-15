@@ -1,0 +1,10 @@
+%ul
+  %li= link_to("Home", "/", active_if(is_front_page()))
+  %li= link_to("Some Page", get_permalink(get_page_id_by_title("Some Page")), active_if(is_page("Some Page")))
+  %li
+    %a(href="#") My Custom Taxonomy
+    - $genres = array_values(get_categories(array('taxonomy' => 'technology-genre')))
+    %ul
+      - foreach ($genres as $genre)
+        %li= link_to($genre->cat_name, get_term_link($genre, 'technology-genre'))
+  %li= link_to("Latest Post for Custom Post Type", get_the_post_type_permalink("partner"), active_if(is_post_type_archive("partner")))
