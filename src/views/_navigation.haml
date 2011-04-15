@@ -7,4 +7,4 @@
     %ul
       - foreach ($genres as $genre)
         %li= link_to($genre->cat_name, get_term_link($genre, 'technology-genre'))
-  %li= link_to("Latest Post for Custom Post Type", get_the_post_type_permalink("partner"), active_if(is_post_type_archive("partner")))
+  %li= link_to("Latest Post for Custom Post Type", get_post_type_archive_link("partner"), active_if(is_post_type_archive("partner")))

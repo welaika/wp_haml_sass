@@ -1,7 +1,6 @@
 <?php
 
   // require embedded plugins
-  require_once dirname(__FILE__).'/lib/vendor/post-type-archives/post-type-archives.php';
   require_once dirname(__FILE__).'/lib/vendor/simple-fields/simple_fields.php';
   require_once dirname(__FILE__).'/lib/vendor/regenerate-thumbnails/regenerate-thumbnails.php';
 

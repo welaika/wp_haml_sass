@@ -5,12 +5,16 @@ require_once dirname(__FILE__).'/vendor/phamlp/haml/HamlParser.php';
 // ====== HAML Helpers ======
 
 function render_partial($name) {
-  global $bypass_haml;
+  global $bypass_haml, $theme_tmp_dir;
   if ($bypass_haml) {
     require dirname(__FILE__)."/../tmp/$name.php";
   } else {
-    $haml = new HamlParser(array('style' => 'expanded', 'ugly' => false, 'helperFile' => dirname(__FILE__).'/../ThemeHamlHelpers.php'));
-    require $haml->parse(dirname(__FILE__)."/../src/views/$name.haml", dirname(__FILE__).'/../tmp');
+    try {
+      $haml = new HamlParser(array('style' => 'expanded', 'ugly' => false, 'helperFile' => dirname(__FILE__).'/../ThemeHamlHelpers.php'));
+      require $haml->parse(dirname(__FILE__)."/../src/views/$name.haml", ($theme_tmp_dir ? $theme_tmp_dir : dirname(__FILE__).'/../tmp'));
+    } catch (Exception $e) {
+      echo 'Caught exception: ',  $e->getMessage(), "\n";
+    }
   }
 }
 
