@@ -636,7 +636,7 @@ function welaika_ajax_callback() {
             $options = $option_array['options'];
 
             foreach ($options as $options_id => $options_value){
-
+              echo $options_value;
               $multicheck_id = $id . "_" . $options_id;
 
               if(!isset($output[$multicheck_id])){
