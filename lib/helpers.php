@@ -409,6 +409,7 @@ function new_post_type($name, $supports = array(), $merge_with_defaults = true) 
     'publicly_queryable' => true,
     'show_ui' => true,
     'query_var' => true,
+    'has_archive' => true,
     'rewrite' => array('slug' => $pluralized),
     'capability_type' => 'post',
     'hierarchical' => false,
