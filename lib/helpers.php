@@ -7,13 +7,14 @@ require_once dirname(__FILE__).'/vendor/phamlp/haml/HamlParser.php';
 function render_partial($name) {
   global $bypass_haml, $theme_tmp_dir;
   if ($bypass_haml) {
-    require dirname(__FILE__)."/../tmp/$name.php";
+    include dirname(__FILE__)."/../tmp/$name.php";
   } else {
-    try {
+    $tmp_dir = $theme_tmp_dir ? $theme_tmp_dir : dirname(__FILE__).'/../tmp';
+    if (is_writable($tmp_dir)) {
       $haml = new HamlParser(array('style' => 'expanded', 'ugly' => false, 'helperFile' => dirname(__FILE__).'/../ThemeHamlHelpers.php'));
-      require $haml->parse(dirname(__FILE__)."/../src/views/$name.haml", ($theme_tmp_dir ? $theme_tmp_dir : dirname(__FILE__).'/../tmp'));
-    } catch (Exception $e) {
-      echo 'Caught exception: ',  $e->getMessage(), "\n";
+      include $haml->parse(dirname(__FILE__)."/../src/views/$name.haml", $tmp_dir);
+    } else {
+      echo "<strong>Ouch!!</strong> It seems that the <code>/tmp/</code> directory is not writable by the server! Go fix it!";
     }
   }
 }
