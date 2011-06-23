@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'lemonade'
 require 'fancy-buttons'
 
 css_dir = "public/css"

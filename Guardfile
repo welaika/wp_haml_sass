@@ -2,11 +2,11 @@ require 'guard'
 require 'fileutils'
 
 guard 'compass', :configuration_file => 'compass.rb' do
-  watch('^src/stylesheets/(.*).s(a|c)ss')
+  watch %r{^src/stylesheets/(.*).s(a|c)ss}
 end
 
 guard 'coffeescript', :output => 'public/javascripts' do
-  watch('^src/coffeescripts/(.*)\.coffee')
+  watch %r{^src/coffeescripts/(.*)\.coffee}
 end
 
 Thread.new do
@@ -17,5 +17,3 @@ Thread.new do
     FileUtils.touch(filename)
   }
 end
-
-
