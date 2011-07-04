@@ -8,12 +8,3 @@ end
 guard 'coffeescript', :output => 'public/javascripts' do
   watch %r{^src/coffeescripts/(.*)\.coffee}
 end
-
-Thread.new do
-  sleep(0.5)
-  puts "Cold start! Recompiling..."
-  Dir.glob('**/*.{sass,coffee}') {|filename|
-    puts "* #{filename}"
-    FileUtils.touch(filename)
-  }
-end
