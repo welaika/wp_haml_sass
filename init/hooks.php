@@ -1,5 +1,6 @@
 <?php
 
+  
   /*
     // Exclude certain categories from home
     function exclude_category() {

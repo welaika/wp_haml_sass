@@ -450,3 +450,8 @@ function new_taxonomy($name, $post_types, $hierarchical = true)
     ));
 
 }
+
+
+register_nav_menus( array(
+ 'primary' => 'Menu Principale',
+ ) );

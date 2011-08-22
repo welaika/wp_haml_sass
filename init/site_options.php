@@ -30,4 +30,4 @@ function setup_theme_options() {
   update_option('welaika_manual', "#");
 }
 
-add_filter("init", "setup_theme_options");
+//add_filter("init", "setup_theme_options");

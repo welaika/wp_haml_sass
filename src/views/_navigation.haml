@@ -1,10 +1,14 @@
-%ul
-  %li= link_to("Home", "/", active_if(is_front_page()))
-  %li= link_to("Some Page", get_permalink(get_page_id_by_title("Some Page")), active_if(is_page("Some Page")))
-  %li
-    %a(href="#") My Custom Taxonomy
-    - $genres = array_values(get_categories(array('taxonomy' => 'technology-genre')))
-    %ul
-      - foreach ($genres as $genre)
-        %li= link_to($genre->cat_name, get_term_link($genre, 'technology-genre'))
-  %li= link_to("Latest Post for Custom Post Type", get_post_type_archive_link("partner"), active_if(is_post_type_archive("partner")))
+- if ( function_exists( 'wp_nav_menu' ) )
+  - wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) );
+- else
+  // Tutto il resto
+  %ul
+    %li= link_to("Home", "/", active_if(is_front_page()))
+    %li= link_to("Some Page", get_permalink(get_page_id_by_title("Some Page")), active_if(is_page("Some Page")))
+    %li
+      %a(href="#") My Custom Taxonomy
+      - $genres = array_values(get_categories(array('taxonomy' => 'technology-genre')))
+      %ul
+        - foreach ($genres as $genre)
+          %li= link_to($genre->cat_name, get_term_link($genre, 'technology-genre'))
+    %li= link_to("Latest Post for Custom Post Type", get_post_type_archive_link("partner"), active_if(is_post_type_archive("partner")))
